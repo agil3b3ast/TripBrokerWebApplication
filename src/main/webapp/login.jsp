@@ -5,7 +5,33 @@
   Time: 23.20
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
+
+<!-- Si dichiara la variabile loginBean e istanzia un oggetto newpackage.LoginBean -->
+<jsp:useBean id="loginBean" scope="request"
+             class="newpackage.LoginBean" />
+
+<!--  Setta automaticamente tutti gli attributi dell'oggetto loginBean -->
+<jsp:setProperty name="loginBean" property="*" />
+
+<%
+    if (request.getParameter("login") != null) {
+        if (loginBean.validate()) {
+%>
+<!-- Passa il controllo alla nuova pagina -->
+<jsp:forward page="Eventi.jsp" />
+<%
+        }
+        else{
+%>
+
+<jsp:forward page="login.jsp" />
+<%
+        }
+    }
+%>
+
 <html>
 <head>
     <title>Login</title>
@@ -21,36 +47,26 @@
         <div class="row">
             <form name="myform" method="post" action="login.jsp" class="col s12">
                 <div class="row">
-                    <div class="input-field col s6">
-                        <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-                        <label for="first_name">First Name</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input id="last_name" type="text" class="validate">
-                        <label for="last_name">Last Name</label>
+
+                    <div class="input-field col s12">
+                        <input id="username" name="username" type="text" class="validate">
+                        <label for="username">Username</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-                        <label for="disabled">Disabled</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" type="password" class="validate">
+                        <input id="password" name="password" type="password" class="validate">
                         <label for="password">Password</label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="email" type="email" class="validate">
-                        <label for="email">Email</label>
-                    </div>
-                </div>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <button class="btn waves-effect waves-light" type="submit" id="login" name="login">Submit
                     <i class="material-icons right">send</i>
                 </button>
+
+                <%
+                    if (request.getParameter("login") != null) { %>
+                <tr><td colspan=2 align="center"><p style="text-color:red;">Dati errati</p></td></tr>
+                <% } %>
             </form>
         </div>
 
