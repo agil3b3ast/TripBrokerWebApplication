@@ -1,6 +1,9 @@
 package newpackage;
 
-import java.util.ArrayList;
+import newpackage.DAOFactory.DAOFactory;
+import newpackage.EntityPackage.OffertaEvento;
+
+import java.util.List;
 
 /**
  * Created by Alessandro on 28/12/2015.
@@ -18,13 +21,26 @@ public class OffertaController {
     private OffertaController() {
     }
 
-    public ArrayList<String[]> findAll(String typetable,String typesearch){
-        if(typetable == null || typesearch == null || typetable == "" || typesearch == "" )
+    public Object findAll(TipoOfferta tipoOfferta,String typesearch){
+        if(typesearch == null || typesearch == "" )
         {
             return null;
         }
 
-        ArrayList<String[]> ls = OffertaDao.findAll(typetable,typesearch);
+        DBResourcesManager.initHibernate();
+
+        //ArrayList<Offerta> ls = OffertaDao.findAll(typetable,typesearch);
+        //List<OffertaEvento> ls = OffertaDaoAnnotations.findAllOffertaEntitysA(typetable,typesearch);
+
+        Object ls = null;
+
+        if(typesearch == null) {
+            ls = DAOFactory.getDAOFactory(tipoOfferta).getOffertaDAO().getList();
+        }
+        else{
+            ls = DAOFactory.getDAOFactory(tipoOfferta).getOffertaDAO().findtype(typesearch);
+        }
+        DBResourcesManager.shutdown();
         return ls;
     }
 }

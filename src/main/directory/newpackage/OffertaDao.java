@@ -10,11 +10,11 @@ public class OffertaDao {
 
     private static String DB_URL = "jdbc:mysql://localhost:3306/myfirsthibernatedb?user=newuser&password=MYL841f8";
 
-    public static ArrayList<String[]> findAll(String typetable,String typesearch) {
+    public static ArrayList<Offerta> findAll(String typetable,String typesearch) {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
-        ArrayList<String[]> u = new ArrayList<String[]>();
+        ArrayList<Offerta> u = new ArrayList<Offerta>();
         try {
             // STEP 2: loading dinamico del driver mysql
             Class.forName("com.mysql.jdbc.Driver");
@@ -29,14 +29,21 @@ public class OffertaDao {
             ResultSet rs = stmt.executeQuery(sql);
 
             int columnCount = rs.getMetaData().getColumnCount();
+            Offerta of;
+
             while(rs.next())
             {
-                String[] row = new String[columnCount];
-                for (int i=0; i <columnCount ; i++)
-                {
-                    row[i] = rs.getString(i+1);
-                }
-                u.add(row);
+                //String[] row = new String[columnCount];
+                of = new Offerta();
+                //for (int i=0; i <columnCount ; i++)
+                //{
+
+                of.setOfprice(rs.getString("prezzo"));
+                of.setOfdateexpired(rs.getString("dataScadenza"));
+                of.setOfname(rs.getString("nome"));
+                of.setOftype(rs.getString("tipologia"));
+                //}
+                u.add(of);
             }
 
         } catch (SQLException se) {

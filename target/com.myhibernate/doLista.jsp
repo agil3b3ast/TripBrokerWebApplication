@@ -1,30 +1,23 @@
-<%--
+<%@ page import="newpackage.TipoOfferta" %>
+<%@ page import="newpackage.TipoOffertaEvento" %><%--
   Created by IntelliJ IDEA.
   User: Alessandro
   Date: 29/12/2015
   Time: 11.49
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+  To change this template use File | Settings | File Templates--%>
 
-<!-- Si dichiara la variabile loginBean e istanzia un oggetto newpackage.LoginBean -->
-<jsp:useBean id="loginBean" scope="request"
-             class="newpackage.LoginBean" />
+<ul class="collapsible" >
 
-<!--  Setta automaticamente tutti gli attributi dell'oggetto loginBean -->
-<jsp:setProperty name="loginBean" property="*" />
-<%
+    <% for(TipoOffertaEvento of : TipoOffertaEvento.values()){%>
+    <li>
+        <form action="OffertaEvento.jsp" name="myform" method="post">
+            <input hidden value="Concerto" name="oftype">
+            <button class="btn-flat waves-effect waves-light" type="submit"><%=of.getNome()%>
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+        <!--<div input id="first" name="first" type="submit" class="collapsible-header">First</div>-->
+    </li>
+    <%}%>
+</ul>
 
-
-%>
-<jsp:forward page="RiassuntoLogin.jsp" />
-
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>

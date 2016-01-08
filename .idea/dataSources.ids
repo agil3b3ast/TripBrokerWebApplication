@@ -177,37 +177,40 @@
       <column id="57" parent="8" name="offertaTrasporto_trasID">
         <data-type>int(11)</data-type>
       </column>
-      <key id="58" parent="8" name="PRIMARY">
+      <column id="58" parent="8" name="stato">
+        <data-type>bit(1)</data-type>
+      </column>
+      <key id="59" parent="8" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="59" parent="8" name="FK_99w9cjkjnw1cxykbiyshrm6qf">
+      <foreign-key id="60" parent="8" name="FK_99w9cjkjnw1cxykbiyshrm6qf">
         <columns>offertaPernotto_perID</columns>
         <ref-key>offertapernotto.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="60" parent="8" name="FK_nu3085b8vs60llpt9v1jf831f">
+      <foreign-key id="61" parent="8" name="FK_nu3085b8vs60llpt9v1jf831f">
         <columns>offertaTrasporto_trasID</columns>
         <ref-key>offertatrasporto.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="61" parent="9" name="Pacchetto_id">
+      <column id="62" parent="9" name="Pacchetto_id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="62" parent="9" name="offertaEvento_eveID">
+      <column id="63" parent="9" name="offertaEvento_eveID">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <foreign-key id="63" parent="9" name="FK_4770xdnj2hpcqbagipkigd0ae">
+      <foreign-key id="64" parent="9" name="FK_4770xdnj2hpcqbagipkigd0ae">
         <columns>Pacchetto_id</columns>
         <ref-key>pacchetto.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="64" parent="9" name="FK_4gguip6ohf8d9pcjqo5h3eyrf">
+      <foreign-key id="65" parent="9" name="FK_4gguip6ohf8d9pcjqo5h3eyrf">
         <columns>offertaEvento_eveID</columns>
         <ref-key>offertaevento.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>

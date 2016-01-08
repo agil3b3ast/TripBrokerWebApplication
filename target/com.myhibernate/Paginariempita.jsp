@@ -30,7 +30,7 @@
     <title>OK</title>
 </head>
 <body>
-<form action="RiassuntoLogin.jsp" name="myform" method="POST">
+<form action="OffertaEvento.jsp" name="myform" method="POST">
     <table align="center">
         <tbody>
         <tr>
