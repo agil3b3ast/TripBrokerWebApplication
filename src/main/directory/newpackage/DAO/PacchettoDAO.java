@@ -38,8 +38,18 @@ public class PacchettoDAO {
         String query = "from Pacchetto";
         @SuppressWarnings("unchecked")
         List<Pacchetto> pacchetto = s.createQuery(query).list();
-        if(pacchetto.size()>0)
+        if(pacchetto.size()>0) {
+            if (pacchetto.get(0).getOffertaPernotto() == null) {
+                System.out.println("Offerta pernotto non esistente");
+            }
+            else if(pacchetto.get(0).getOffertaTrasporto() == null){
+                System.out.println("Offerta trasporto non esistente");
+            }
+            else if(pacchetto.get(0).getOffertaEvento() == null){
+                System.out.println("Offerta evento non esistente");
+            }
             return pacchetto;
+        }
         else
             return null;
 

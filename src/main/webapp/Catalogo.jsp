@@ -1,5 +1,6 @@
 <%@ page import="newpackage.PacchettoBean" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="newpackage.OffertaEventoBean" %>
 <!DOCTYPE html>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -11,6 +12,10 @@
 
 <!--  Setta automaticamente tutti gli attributi dell'oggetto offertaBean -->
 <jsp:setProperty name="pacchettoBean" property="*" />
+
+<jsp:useBean id="offertapernottoBean" scope="request"
+             class="newpackage.OffertaPernottoBean"/>
+<jsp:setProperty name="offertapernottoBean" property="*"/>
 
 <%
     if (!pacchettoBean.selectAll()) {
@@ -30,8 +35,8 @@
 
     <script type="text/javascript">
         function onClick() {
-
-            var ni = document.getElementById('clicks');
+            var index = arguments[0];
+            var ni = document.getElementById('clicks'+index);
             ni.style.display = "block"
             /*
             var newdiv = document.createElement('div');
@@ -143,13 +148,13 @@
                                             <p>Prezzo <%=ls.get(i).getPprice()%></p></div>
                                         </div>
                                         <div class="card-action">
-                                            <a onclick="onClick(<%=i%>);" class="waves-effect waves-light" id="<%=i%>">Dettagli</a>
+                                            <a onclick="onClick(<%=i%>);" class="waves-effect waves-light">Dettagli</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!--</button>-->
-                            <div class="col s7" id="clicks" style="display: none">
+                            <div class="col s7" id="clicks<%=i%>" style="display: none">
                                 <div class="card deep-purple">
                                     <div class="card-content white-text">
                                              <span class="card-title">
@@ -160,7 +165,47 @@
                                                 <p><button id="artistbutton" style="background: url(biffyclyro.jpeg); background-size:auto; height: 256px;width: 256px;" onclick="parent.location='login.jsp'"/></p>
                                             </div>
                                             <div class="col s7">
-                                                <p>This is a packet description.<br>Prezzo <%=ls.get(i).getPprice()%></p>
+                                                <p>This is a packet description.
+                                                    <br>Prezzo <%=ls.get(i).getPprice()%>
+                                                </p>
+                                                <div class="card blue-grey">
+                                                    <div class="card-content white-text">
+                                                        <span class="card-title">
+                                                            Offerta Pernotto <%=ls.get(i).getPofpernotto().getOfname()%>
+                                                        </span>
+                                                        <ul>
+                                                            <li><img src="http://orig15.deviantart.net/1614/f/2010/217/e/0/biffy_clyro_i_by_henrikack.jpg" style="margin-top: 10px; width: 100px; height: 70px;"></li>
+                                                            <li>Data scadenza <%=ls.get(i).getPofpernotto().getOfdateexpired()%></li>
+                                                            <li>Prezzo <%=ls.get(i).getPofpernotto().getOfprice()%></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="card blue-grey">
+                                                    <div class="card-content white-text">
+                                                        <span class="card-title">
+                                                            Offerta Trasporto <%=ls.get(i).getPoftrasporto().getOfname()%>
+                                                        </span>
+                                                        <ul>
+                                                            <li><img src="http://orig15.deviantart.net/1614/f/2010/217/e/0/biffy_clyro_i_by_henrikack.jpg" style="margin-top: 10px; width: 100px; height: 70px;"></li>
+                                                            <li>Data scadenza <%=ls.get(i).getPoftrasporto().getOfdateexpired()%></li>
+                                                            <li>Prezzo <%=ls.get(i).getPoftrasporto().getOfprice()%></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <%for(int j = 0;j<ls.get(i).getPofevento().size();j++){%>
+                                                <div class="card blue-grey">
+                                                    <div class="card-content white-text">
+                                                        <span class="card-title">
+                                                            Offerta Evento <%=ls.get(i).getPofevento().get(j).getOfname()%>
+                                                        </span>
+                                                        <ul>
+                                                            <li><img src="http://orig15.deviantart.net/1614/f/2010/217/e/0/biffy_clyro_i_by_henrikack.jpg" style="margin-top: 10px; width: 100px; height: 70px;"></li>
+                                                            <li>Data scadenza <%=ls.get(i).getPofevento().get(j).getOfdateexpired()%></li>
+                                                            <li>Prezzo <%=ls.get(i).getPofevento().get(j).getOfprice()%></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <%}%>
                                             </div>
                                         </div>
                                     </div>
