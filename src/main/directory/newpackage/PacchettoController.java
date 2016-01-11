@@ -35,4 +35,16 @@ public class PacchettoController {
         DBResourcesManager.shutdown();
         return ls;
     }
+
+    public Pacchetto findByID(String idtofind){
+        DBResourcesManager.initHibernate();
+
+        Pacchetto p = DAOFactory.getPacchettoDAO().findByID(idtofind);
+
+        DBResourcesManager.shutdown();
+        return p;
+    }
+
+
+
 }

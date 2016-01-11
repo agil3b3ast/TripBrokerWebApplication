@@ -1,6 +1,5 @@
 <%@ page import="newpackage.PacchettoBean" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="newpackage.OffertaEventoBean" %>
 <!DOCTYPE html>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,14 +12,21 @@
 <!--  Setta automaticamente tutti gli attributi dell'oggetto offertaBean -->
 <jsp:setProperty name="pacchettoBean" property="*" />
 
-<jsp:useBean id="offertapernottoBean" scope="request"
-             class="newpackage.OffertaPernottoBean"/>
-<jsp:setProperty name="offertapernottoBean" property="*"/>
+<jsp:useBean id="carrelloBean" scope="session"
+             class="newpackage.CarrelloBean"/>
+<jsp:setProperty name="carrelloBean" property="*"/>
 
 <%
     if (!pacchettoBean.selectAll()) {
         System.out.println("not null");
     }
+    if(!(carrelloBean.getPacketitem().equals(""))){
+        System.out.println("Non è stringa vuota");
+        if(carrelloBean.addItem()) {
+            System.out.println("True");%>
+        <jsp:forward page="Pagamento.jsp"/>
+<%      }
+}
 %>
 
 <html>
@@ -37,7 +43,10 @@
         function onClick() {
             var index = arguments[0];
             var ni = document.getElementById('clicks'+index);
-            ni.style.display = "block"
+            if(ni.style.display == "none")
+                ni.style.display = "block"
+            else
+                ni.style.display = "none"
             /*
             var newdiv = document.createElement('div');
 
@@ -148,7 +157,21 @@
                                             <p>Prezzo <%=ls.get(i).getPprice()%></p></div>
                                         </div>
                                         <div class="card-action">
-                                            <a onclick="onClick(<%=i%>);" class="waves-effect waves-light">Dettagli</a>
+                                            <table>
+                                                <tr>
+                                                    <td width="50%">
+                                                        <a onclick="onClick(<%=i%>);" class="waves-effect waves-light">Dettagli</a>
+                                                    </td>
+                                                    <td width="50%">
+                                                        <form action="Catalogo.jsp" name="myform" method="post">
+                                                            <input hidden value="<%=ls.get(i).getId()%>" name="packetitem">
+                                                            <button class="btn-flat waves-effect waves-light" type="submit">Acquista
+                                                                <i class="material-icons right">send</i>
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>

@@ -55,6 +55,17 @@ public class PacchettoDAO {
 
     }
 
+    public Pacchetto findByID(String idtofind){
+        Session s = DBResourcesManager.getSession();
+        String query = "from Pacchetto pacchetto where pacchetto.id='"+idtofind+"'";
+        List<Pacchetto> p = s.createQuery(query).list();
+        if(p.size() > 1 || p.isEmpty()){
+            System.out.println("Lista con più di un elemento o vuota");
+            return null;
+        }
+        return p.get(0);
+    }
+
     public  List<Pacchetto> findNotApproved() {
         Session s = DBResourcesManager.getSession();
         String query = "from Pacchetto pacchetto where pacchetto.stato=false";

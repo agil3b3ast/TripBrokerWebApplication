@@ -43,4 +43,20 @@ public class OffertaController {
         DBResourcesManager.shutdown();
         return ls;
     }
+
+    public Object findByID(TipoOfferta tipoOfferta,String idtofind){
+        DBResourcesManager.initHibernate();
+
+        //ArrayList<Offerta> ls = OffertaDao.findAll(typetable,typesearch);
+        //List<OffertaEvento> ls = OffertaDaoAnnotations.findAllOffertaEntitysA(typetable,typesearch);
+
+        Object ls = null;
+
+        ls = DAOFactory.getDAOFactory(tipoOfferta).getOffertaDAO().findOff(idtofind);
+        DBResourcesManager.shutdown();
+        return ls;
+    }
+
+
+
 }
