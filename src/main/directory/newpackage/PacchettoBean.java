@@ -36,12 +36,14 @@ public class PacchettoBean {
         this.poftrasporto.setOfdateexpired(newoftrasporto.getDataScadenza());
         this.poftrasporto.setOfprice(newoftrasporto.getPrezzo());
         this.poftrasporto.setOfname(newoftrasporto.getNome());
+        this.poftrasporto.setOfid(newoftrasporto.getTrasID());
     }
     public void setPofpernotto(OffertaPernotto newofpernotto){
         this.pofpernotto.setOftype(newofpernotto.getTipologia());
         this.pofpernotto.setOfdateexpired(newofpernotto.getDataScadenza());
         this.pofpernotto.setOfprice(newofpernotto.getPrezzo());
         this.pofpernotto.setOfname(newofpernotto.getNome());
+        this.pofpernotto.setOfid(newofpernotto.getPerID());
     }
     public void setPofevento(List<OffertaEvento> loe){
         OffertaEventoBean offertaEventoBean = new OffertaEventoBean();
@@ -50,6 +52,7 @@ public class PacchettoBean {
             offertaEventoBean.setOfdateexpired(offertaEvento.getDataScadenza());
             offertaEventoBean.setOftype(offertaEvento.getTipologia());
             offertaEventoBean.setOfprice(offertaEvento.getPrezzo());
+            offertaEventoBean.setOfid(offertaEvento.getEveID());
             this.pofevento.add(offertaEventoBean);
         }
     }

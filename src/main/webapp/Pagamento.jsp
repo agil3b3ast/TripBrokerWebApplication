@@ -1,5 +1,4 @@
-<%@ page import="newpackage.EntityPackage.Offerta" %>
-<%@ page import="newpackage.EntityPackage.Pacchetto" %><%--
+<%@ page import="newpackage.EntityPackage.*" %><%--
   Created by IntelliJ IDEA.
   User: Alessandro
   Date: 10/01/2016
@@ -10,20 +9,31 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 
-<jsp:useBean id="carrelloBean" scope="request"
-             class="newpackage.CarrelloBean"/>
-<jsp:setProperty name="carrelloBean" property="*"/>
+<!-- Si dichiara la variabile offertaBean e istanzia un oggetto newpackage.offertaBean -->
+<jsp:useBean id="carrelloBean" scope="session"
+             type="newpackage.CarrelloBean" />
 
 <%
     if(request.getParameter("pay") != null){
-        if(carrelloBean.Pay())
-            System.out.println("Devo pagare");
-    }
-    if(carrelloBean.getPacketitem().equals("ciao")){
-        System.out.println("Ciao");
-    }
+        if(request.getParameter("pay").equals("pay")){
+            if(!carrelloBean.Pay()){%>
+
+    <div class="row">
+        <div class="card blue-grey">
+            <div class="card-content white-text">
+                <span class="card-title">Pagamento non riuscito per le seguenti offerte e/o pacchetti</span>
+            </div>
+        </div>
+        <form action="Catalogo.jsp" name="myform8" method="post">
+            <button class="btn-flat waves-effect waves-light" type="submit">Torna al catalogo
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+
+    <%}}}
     if(request.getParameter("packetitem") != null){
-        System.out.println("not null");
+        System.out.println(request.getParameter("packetitem").equals("ciao"));
     }
     if(request.getParameter("enter") != null){
         System.out.println(request.getParameter("enter").equals("enter"));
@@ -34,7 +44,6 @@
 
 <html>
     <head>
-        <title>Pagamento</title>
         <!--Import Google Icon Font-->
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
@@ -42,25 +51,57 @@
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <title>Pagamento</title>
     </head>
     <body>
-        <%if(carrelloBean.getOfferlist() != null){
-            for(Offerta of : carrelloBean.getOfferlist()){%>
+
+        <%for(OffertaEvento ofe : carrelloBean.getOfferEventolist()){%>
         <div class="card blue-grey">
             <div class="card-content white-text">
                 <span class="card-title">
-                    Offerta <%=of.getNome()%>
+                    Offerta <%=ofe.getNome()%>
                 </span>
                 <ul>
                     <li><img src="http://orig15.deviantart.net/1614/f/2010/217/e/0/biffy_clyro_i_by_henrikack.jpg" style="margin-top: 10px; width: 100px; height: 70px;"></li>
-                    <li>Data scadenza <%=of.getDataScadenza()%></li>
-                    <li>Prezzo <%=of.getPrezzo()%></li>
+                    <li>Data scadenza <%=ofe.getDataScadenza()%></li>
+                    <li>Prezzo <%=ofe.getPrezzo()%></li>
                 </ul>
             </div>
         </div>
-        <%}}
-        else if(carrelloBean.getPacketlist() != null){
-            for(Pacchetto p : carrelloBean.getPacketlist()){%>
+        <%}%>
+
+        <%for(OffertaPernotto ofp : carrelloBean.getOfferPernottoArrayList()){%>
+        <div class="card blue-grey">
+            <div class="card-content white-text">
+                <span class="card-title">
+                    Offerta <%=ofp.getNome()%>
+                </span>
+                <ul>
+                    <li><img src="http://orig15.deviantart.net/1614/f/2010/217/e/0/biffy_clyro_i_by_henrikack.jpg" style="margin-top: 10px; width: 100px; height: 70px;"></li>
+                    <li>Data scadenza <%=ofp.getDataScadenza()%></li>
+                    <li>Prezzo <%=ofp.getPrezzo()%></li>
+                </ul>
+            </div>
+        </div>
+        <%}%>
+
+        <%for(OffertaTrasporto oft : carrelloBean.getOffertaTrasportoArrayList()){%>
+        <div class="card blue-grey">
+            <div class="card-content white-text">
+                <span class="card-title">
+                    Offerta <%=oft.getNome()%>
+                </span>
+                <ul>
+                    <li><img src="http://orig15.deviantart.net/1614/f/2010/217/e/0/biffy_clyro_i_by_henrikack.jpg" style="margin-top: 10px; width: 100px; height: 70px;"></li>
+                    <li>Data scadenza <%=oft.getDataScadenza()%></li>
+                    <li>Prezzo <%=oft.getPrezzo()%></li>
+                </ul>
+            </div>
+        </div>
+        <%}%>
+
+        <%for(Pacchetto p : carrelloBean.getPacketlist()){%>
         <div class="card blue-grey">
             <div class="card-content white-text">
                 <span class="card-title">
@@ -72,30 +113,30 @@
                 </ul>
             </div>
         </div>
-        <%}%>
-            <form action="Pagamento.jsp" name="myform" method="post">
-                <button class="btn-flat waves-effect waves-light" type="submit" id="pay" name="pay">Acquista
+        <%}
+        if(!carrelloBean.carrelloempty()){
+        %>
+         <form action="Pagamento.jsp" name="myform3" method="post">
+            <input hidden value="pay" type="text" name="pay">
+            <button class="btn-flat waves-effect waves-light" type="submit">Acquista
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+        <%}else{%>
+        <div class="row">
+            <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title">Carrello Vuoto</span>
+                </div>
+            </div>
+            <form action="Catalogo.jsp" name="myform2" method="post">
+                <button class="btn-flat waves-effect waves-light" type="submit">Torna al catalogo
                     <i class="material-icons right">send</i>
                 </button>
             </form>
-        <%}
-        else if(carrelloBean.getOfferlist() == null && carrelloBean.getPacketlist() == null){%>
-            <div class="row">
-                <div class="card blue-grey">
-                    <div class="card-content white-text">
-                        <span class="card-title">Carrello Vuoto</span>
-                    </div>
-                </div>
-                <form action="Pagamento.jsp" name="myform2" method="post">
-                    <input hidden value="ciao" type="text" name=packetitem" id="packetitem">
-                    <button class="btn-flat waves-effect waves-light" type="submit">Torna al catalogo
-                        <i class="material-icons right">send</i>
-                    </button>
-                </form>
-            </div>
+        </div>
         <%}%>
 
-        <!--Import jQuery before materialize.js-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>
 

@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class OffertaEventoBean extends OffertaBean{
     private String oftype;
+    private int ofid;
 
     public OffertaEventoBean(){
         super();
@@ -21,7 +22,8 @@ public class OffertaEventoBean extends OffertaBean{
 
     public String getOftype(){return this.oftype;}
     public void setOftype(String newoftype){this.oftype = newoftype;}
-
+    public int getOfid(){return this.ofid;}
+    public void setOfid(int newid){this.ofid = newid;}
     /*
     public boolean selectAll(){
         if(this.oftype != ""){
@@ -72,7 +74,7 @@ public class OffertaEventoBean extends OffertaBean{
                 offbean.setOfname(off.getNome());
                 offbean.setOftype(off.getTipologia());
                 offbean.setOfprice((off.getPrezzo()));
-
+                offbean.setOfid(off.getEveID());
                 this.offerList.add(offbean);
             }
         }

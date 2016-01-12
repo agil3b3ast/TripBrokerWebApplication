@@ -13,7 +13,7 @@ import newpackage.EntityPackage.OffertaTrasporto;
 
 public class OffertaTrasportoBean extends OffertaBean{
     private String oftype;
-
+    private int ofid;
     public OffertaTrasportoBean(){
         super();
         this.oftype = "";
@@ -21,7 +21,8 @@ public class OffertaTrasportoBean extends OffertaBean{
 
     public String getOftype(){return this.oftype;}
     public void setOftype(String newoftype){this.oftype = newoftype;}
-
+    public int getOfid(){return this.ofid;}
+    public void setOfid(int newid){this.ofid = newid;}
     /*
     public boolean selectAll(){
         if(this.oftype != ""){
@@ -72,7 +73,7 @@ public class OffertaTrasportoBean extends OffertaBean{
                 offbean.setOfname(off.getNome());
                 offbean.setOftype(off.getTipologia());
                 offbean.setOfprice((off.getPrezzo()));
-
+                offbean.setOfid(off.getTrasID());
                 this.offerList.add(offbean);
             }
         }

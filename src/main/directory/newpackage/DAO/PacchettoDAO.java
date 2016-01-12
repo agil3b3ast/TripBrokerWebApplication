@@ -5,7 +5,9 @@ import newpackage.EntityPackage.Pacchetto;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 
+import javax.ejb.EJBTransactionRolledbackException;
 import java.util.List;
 
 /**
@@ -98,6 +100,36 @@ public class PacchettoDAO {
             e.printStackTrace();
         }
 
+    }
+
+    public void delPack(int id) throws HibernateException
+    {
+        Session s = DBResourcesManager.getSession();
+
+        Transaction tx = null;
+        Pacchetto pacchetto = (Pacchetto)s.get(Pacchetto.class , id);
+        try {
+            tx = s.beginTransaction();
+            s.delete(pacchetto);
+            tx.commit();
+        }
+        /*
+        catch (EJBTransactionRolledbackException e) {
+            Throwable t = e.getCause();
+            while ((t != null) && !(t instanceof ConstraintViolationException)) {
+                t = t.getCause();
+            }
+            if (t instanceof ConstraintViolationException) {
+                System.out.println("Offerta non rimovibile, presente in un pacchetto");
+            }
+        }*/
+        catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
+            throw e;
+        }
+        finally {
+            DBResourcesManager.shutdown();
+        }
     }
 
 

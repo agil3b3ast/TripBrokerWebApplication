@@ -20,8 +20,11 @@
     if (!pacchettoBean.selectAll()) {
         System.out.println("not null");
     }
-    if(!(carrelloBean.getPacketitem().equals(""))){
-        System.out.println("Non è stringa vuota");
+    if(request.getParameter("offerpernottoitem") != null)
+        System.out.println(request.getParameter("offerpernottoitem"));
+
+    if(!(carrelloBean.getPacketitem().equals("")) || !(carrelloBean.getOffereventoitem().equals("")) || !(carrelloBean.getOfferpernottoitem().equals("")) || !(carrelloBean.getOffertrasportoitem().equals(""))){
+        System.out.println("Qualcosa non è null");
         if(carrelloBean.addItem()) {
             System.out.println("True");%>
         <jsp:forward page="Pagamento.jsp"/>
@@ -38,6 +41,8 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Catalogo</title>
 
     <script type="text/javascript">
         function onClick() {
@@ -163,8 +168,8 @@
                                                         <a onclick="onClick(<%=i%>);" class="waves-effect waves-light">Dettagli</a>
                                                     </td>
                                                     <td width="50%">
-                                                        <form action="Catalogo.jsp" name="myform" method="post">
-                                                            <input hidden value="<%=ls.get(i).getId()%>" name="packetitem">
+                                                        <form action="Catalogo.jsp" name="myform2" method="post">
+                                                            <input hidden value="<%=ls.get(i).getId()%>" type="text" name="packetitem" id="packetitem">
                                                             <button class="btn-flat waves-effect waves-light" type="submit">Acquista
                                                                 <i class="material-icons right">send</i>
                                                             </button>
@@ -201,6 +206,14 @@
                                                             <li>Data scadenza <%=ls.get(i).getPofpernotto().getOfdateexpired()%></li>
                                                             <li>Prezzo <%=ls.get(i).getPofpernotto().getOfprice()%></li>
                                                         </ul>
+                                                        <div class="card-action">
+                                                            <form action="Catalogo.jsp" name="myform3" method="post">
+                                                                <input hidden value="<%=ls.get(i).getPofpernotto().getOfid()%>" type="text" name="offerpernottoitem" id="offerpernottoitem">
+                                                                <button class="btn-flat waves-effect waves-light" type="submit">Acquista
+                                                                    <i class="material-icons right">send</i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="card blue-grey">
@@ -213,6 +226,14 @@
                                                             <li>Data scadenza <%=ls.get(i).getPoftrasporto().getOfdateexpired()%></li>
                                                             <li>Prezzo <%=ls.get(i).getPoftrasporto().getOfprice()%></li>
                                                         </ul>
+                                                        <div class="card-action">
+                                                            <form action="Catalogo.jsp" name="myform4" method="post">
+                                                                <input hidden value="<%=ls.get(i).getPoftrasporto().getOfid()%>" type="text" name="offertrasportoitem" id="offertrasportoitem">
+                                                                <button class="btn-flat waves-effect waves-light" type="submit">Acquista
+                                                                    <i class="material-icons right">send</i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <%for(int j = 0;j<ls.get(i).getPofevento().size();j++){%>
@@ -226,6 +247,14 @@
                                                             <li>Data scadenza <%=ls.get(i).getPofevento().get(j).getOfdateexpired()%></li>
                                                             <li>Prezzo <%=ls.get(i).getPofevento().get(j).getOfprice()%></li>
                                                         </ul>
+                                                        <div class="card-action">
+                                                            <form action="Catalogo.jsp" name="myform5" method="post">
+                                                                <input hidden value="<%=ls.get(i).getPofevento().get(j).getOfid()%>" type="text" name="offereventoitem" id="offereventoitem">
+                                                                <button class="btn-flat waves-effect waves-light" type="submit">Acquista
+                                                                    <i class="material-icons right">send</i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <%}%>

@@ -4,6 +4,7 @@ import newpackage.DBResourcesManager;
 import newpackage.EntityPackage.Offerta;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  * Created by Alessandro on 08/01/2016.
@@ -27,4 +28,5 @@ public abstract class OffertaDAO {
     public abstract Object findOff(String id);
     public abstract void modPrezzo(int id, int prezzo);
     public abstract Object findtype(String type);
+    public abstract void delof(int id);
 }

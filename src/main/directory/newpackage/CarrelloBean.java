@@ -9,65 +9,99 @@ import java.util.ArrayList;
  */
 public class CarrelloBean {
     private ArrayList<Pacchetto> packetlist;
-    private ArrayList<newpackage.EntityPackage.Offerta> offerlist;
+    private ArrayList<OffertaEvento> offertaEventoArrayList;
+    private ArrayList<OffertaPernotto> offertaPernottoArrayList;
+    private ArrayList<OffertaTrasporto> offertaTrasportoArrayList;
     private String packetitem;
-    private String offeritem;
+    private String offereventoitem;
+    private String offerpernottoitem;
+    private String offertrasportoitem;
 
     public CarrelloBean(){
-        this.packetlist = null;
-        this.offerlist = null;
         this.packetitem = "";
-        this.offeritem = "";
+        this.offereventoitem = "";
+        this.offerpernottoitem = "";
+        this.offertrasportoitem = "";
+        this.offertaTrasportoArrayList = new ArrayList<OffertaTrasporto>();
+        this.offertaPernottoArrayList = new ArrayList<OffertaPernotto>();
+        this.offertaEventoArrayList = new ArrayList<OffertaEvento>();
+        this.packetlist = new ArrayList<Pacchetto>();
     }
 
     public ArrayList<Pacchetto> getPacketlist(){return this.packetlist;}
-    public ArrayList<newpackage.EntityPackage.Offerta> getOfferlist(){return this.offerlist;}
+    public ArrayList<OffertaEvento> getOfferEventolist(){return this.offertaEventoArrayList;}
+    public ArrayList<OffertaPernotto> getOfferPernottoArrayList(){return this.offertaPernottoArrayList;}
+    public ArrayList<OffertaTrasporto> getOffertaTrasportoArrayList(){return this.offertaTrasportoArrayList;}
     public String getPacketitem(){return this.packetitem;}
-    public String getOfferitem(){return this.offeritem;}
+    public String getOffereventoitem(){return this.offereventoitem;}
+    public void setOffereventoitem(String newofferitem){this.offereventoitem = newofferitem;}
+    public String getOfferpernottoitem(){return this.offerpernottoitem;}
+    public void setOfferpernottoitem(String newofferitem){this.offerpernottoitem = newofferitem;}
+    public String getOffertrasportoitem(){return this.offertrasportoitem;}
+    public void setOffertrasportoitem(String newofferitem){this.offertrasportoitem = newofferitem;}
+    public void setPacketitem(String newpacketitem){this.packetitem = newpacketitem;}
 
-    public boolean addItem(){
 
-        if(this.packetitem == ""){
-            if(this.offeritem == ""){
-                return false;
+    public boolean carrelloempty(){
+        return (this.getOffertaTrasportoArrayList().isEmpty() && this.getOfferPernottoArrayList().isEmpty() && this.getOfferEventolist().isEmpty() && this.getPacketlist().isEmpty());
+    }
+
+
+    public boolean addItem() {
+
+        if (!this.packetitem.equals("")) {
+            PacchettoController pc = PacchettoController.getInstance();
+            Pacchetto p = pc.findByID(this.packetitem);
+            if (p != null) {
+                this.packetlist.add(p);
+                this.packetitem = "";
+                return true;
             }
-            else{
-                OffertaController oc = OffertaController.getInstance();
-
-                newpackage.EntityPackage.Offerta of = (newpackage.EntityPackage.Offerta) oc.findByID(TipoOfferta.OffertaEvento,this.offeritem);
-                if(of != null){
-                    this.offerlist.add(of);
-                    this.offeritem = null;
-                    return true;
-                }
-                of = (OffertaPernotto) oc.findByID(TipoOfferta.OffertaPernotto,this.offeritem);
-                if(of != null){
-                    this.offerlist.add(of);
-                    this.offeritem = null;
-                    return true;
-                }
-                of = (OffertaTrasporto) oc.findByID(TipoOfferta.OffertaTrasporto,this.offeritem);
-                if(of != null){
-                    this.offerlist.add(of);
-                    this.offeritem = null;
-                    return true;
-                }
-            }
+            return false;
         }
 
-        PacchettoController pc = PacchettoController.getInstance();
-        Pacchetto p = pc.findByID(this.packetitem);
-        if(p != null) {
-            this.packetlist.add(p);
-            this.packetitem = null;
-            return true;
+        if (!this.offereventoitem.equals("") || !this.offertrasportoitem.equals("") || !this.offerpernottoitem.equals("")) {
+
+            OffertaController oc = OffertaController.getInstance();
+
+            if(!this.offereventoitem.equals("")) {
+                Object of = oc.findByID(TipoOfferta.OffertaEvento, this.offereventoitem);
+
+                if (of != null) {
+                    this.offertaEventoArrayList.add((OffertaEvento) of);
+                    this.offereventoitem = "";
+                    return true;
+                }
+            }
+
+            if(!this.offerpernottoitem.equals("")) {
+                Object of = oc.findByID(TipoOfferta.OffertaPernotto, this.offerpernottoitem);
+                if (of != null) {
+                    this.offertaPernottoArrayList.add((OffertaPernotto) of);
+                    this.offerpernottoitem = "";
+                    return true;
+                }
+            }
+
+            if(!this.offerpernottoitem.equals("")) {
+                Object of = oc.findByID(TipoOfferta.OffertaTrasporto, this.offertrasportoitem);
+                if (of != null) {
+                    this.offertaTrasportoArrayList.add((OffertaTrasporto) of);
+                    this.offertrasportoitem = "";
+                    return true;
+                }
+            }
         }
         return false;
+
     }
 
     public boolean Pay(){
-        //PagamentoController(this.packetlist,this.offerlist)
-        return false;
+        PagamentoController pc = PagamentoController.getInstance();
+        pc.Pay(this.packetlist,this.offertaEventoArrayList,this.offertaPernottoArrayList,this.offertaTrasportoArrayList);
+
+        return this.packetlist.isEmpty() && this.offertaEventoArrayList.isEmpty() && this.offertaTrasportoArrayList.isEmpty() && this.offertaPernottoArrayList.isEmpty();
+
     }
 
 }

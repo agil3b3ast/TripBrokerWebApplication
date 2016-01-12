@@ -1,5 +1,7 @@
 package newpackage;
 
+import newpackage.EntityPackage.Offerta;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -10,7 +12,7 @@ public class OffertaDao {
 
     private static String DB_URL = "jdbc:mysql://localhost:3306/myfirsthibernatedb?user=newuser&password=MYL841f8";
 
-    public static ArrayList<Offerta> findAll(String typetable,String typesearch) {
+    public static ArrayList<Offerta> findAll(String typetable, String typesearch) {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -38,10 +40,10 @@ public class OffertaDao {
                 //for (int i=0; i <columnCount ; i++)
                 //{
 
-                of.setOfprice(rs.getString("prezzo"));
-                of.setOfdateexpired(rs.getString("dataScadenza"));
-                of.setOfname(rs.getString("nome"));
-                of.setOftype(rs.getString("tipologia"));
+                //of.setOfprice(rs.getString("prezzo"));
+                //of.setOfdateexpired(rs.getString("dataScadenza"));
+                //of.setOfname(rs.getString("nome"));
+                //of.setOftype(rs.getString("tipologia"));
                 //}
                 u.add(of);
             }
