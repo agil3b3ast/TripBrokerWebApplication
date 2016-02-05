@@ -2,24 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c875268-71a1-4d59-acb3-7dd633b6a63e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_3.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javassist_javassist_3_12_1_GA.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_34.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_4_0_5_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_4_3_8_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_0_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_18_1_GA.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_1_1_0_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_1_3_GA.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_annotations_1_2_0_Beta1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_0_0_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_simple_1_7_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_0_b2.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/newpackage/LoginBean.class" afterPath="$PROJECT_DIR$/target/classes/newpackage/LoginBean.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/newpackage/LoginController.class" afterPath="$PROJECT_DIR$/target/classes/newpackage/LoginController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/newpackage/OffertaBean.class" afterPath="$PROJECT_DIR$/target/classes/newpackage/OffertaBean.class" />
@@ -34,42 +16,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/com.myhibernate/WEB-INF/classes/newpackage/UtendeDao.class" afterPath="$PROJECT_DIR$/target/com.myhibernate/WEB-INF/classes/newpackage/UtendeDao.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/com.myhibernate/WEB-INF/classes/newpackage/Utente.class" afterPath="$PROJECT_DIR$/target/com.myhibernate/WEB-INF/classes/newpackage/Utente.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/com.myhibernate/WEB-INF/lib/com.myhibernate-1.0-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/target/com.myhibernate/WEB-INF/lib/com.myhibernate-1.0-SNAPSHOT.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyFirstWebApp.iml" afterPath="$PROJECT_DIR$/MyFirstWebApp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/com.myhibernate.iml" afterPath="$PROJECT_DIR$/com.myhibernate.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/CarrelloBean.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/CarrelloBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/DAO/OffertaDAO.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/DAO/OffertaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/DAO/OffertaEventoDAO.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/DAO/OffertaEventoDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/DAO/OffertaPernottoDAO.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/DAO/OffertaPernottoDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/DAO/OffertaTrasportoDAO.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/DAO/OffertaTrasportoDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/DAOFactory/DAOFactory.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/DAOFactory/DAOFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/EntityPackage/Offerta.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/EntityPackage/Offerta.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/EntityPackage/User.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/EntityPackage/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/LoginBean.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/LoginBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/LoginController.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/MainTest.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/MainTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/OffertaBean.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/OffertaBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/OffertaController.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/OffertaController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/OffertaEventoBean.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/OffertaEventoBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/OffertaPernottoBean.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/OffertaPernottoBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/OffertaTrasportoBean.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/OffertaTrasportoBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/PacchettoBean.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/PacchettoBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/UtendeDao.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/UtendeDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/directory/newpackage/Utente.java" afterPath="$PROJECT_DIR$/src/main/directory/newpackage/Utente.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/Catalogo.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/Catalogo.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/OffertaEvento.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/OffertaEvento.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/OffertaPernotto.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/OffertaPernotto.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/OffertaTrasporto.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/OffertaTrasporto.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/Pagamento.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/Pagamento.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/init.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/init.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/com.myhibernate/WEB-INF/classes/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/target/com.myhibernate/WEB-INF/classes/hibernate.cfg.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/com.myhibernate/js/init.js" afterPath="$PROJECT_DIR$/target/com.myhibernate/js/init.js" />
@@ -868,12 +816,19 @@
       <option name="number" value="Default" />
       <updated>1454668466158</updated>
       <workItem from="1454668467476" duration="1274000" />
-      <workItem from="1454669890909" duration="1465000" />
+      <workItem from="1454669890909" duration="1564000" />
     </task>
+    <task id="LOCAL-00001" summary="Added login,signup">
+      <created>1454671462039</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1454671462039</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2739000" />
+    <option name="totallyTimeSpent" value="2838000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -913,6 +868,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added login,signup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added login,signup" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -948,6 +907,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -955,6 +915,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
