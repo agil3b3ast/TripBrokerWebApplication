@@ -1,4 +1,8 @@
-<%@ page import="newpackage.EntityPackage.*" %><%--
+<%@ page import="newpackage.OffertaEventoBean" %>
+<%@ page import="newpackage.OffertaPernottoBean" %>
+<%@ page import="newpackage.OffertaTrasportoBean" %>
+<%@ page import="newpackage.PacchettoBean" %>
+<%--
   Created by IntelliJ IDEA.
   User: Alessandro
   Date: 10/01/2016
@@ -13,7 +17,22 @@
 <jsp:useBean id="carrelloBean" scope="session"
              type="newpackage.CarrelloBean" />
 
+<!-- Si dichiara la variabile utenteBean e istanzia un oggetto newpackage.utenteBean -->
+<jsp:useBean id="utenteBean" scope="session"
+             class="newpackage.UtenteBean" />
+
+<!--  Setta automaticamente tutti gli attributi dell'oggetto utenteBean -->
+<jsp:setProperty name="utenteBean" property="*" />
+
+<jsp:useBean id="carrelloBean" scope="session"
+             class="newpackage.CarrelloBean"/>
+<jsp:setProperty name="carrelloBean" property="*"/>
+
 <%
+    if(!utenteBean.isLogged()){
+%>
+    <jsp:forward page="login.jsp"/>
+<%  }
     if(request.getParameter("pay") != null){
         if(request.getParameter("pay").equals("pay")){
             if(!carrelloBean.Pay()){%>
@@ -55,61 +74,83 @@
         <title>Pagamento</title>
     </head>
     <body>
+        <jsp:include page="navbar.jsp"/>
+        <%//for(OffertaEvento ofe : carrelloBean.getOfferEventolist()){%>
+        <%for(Object object : carrelloBean.getItemList()){
+            if(object instanceof OffertaEventoBean){
+            OffertaEventoBean ofe = (OffertaEventoBean) object;%>
+            <div class="card blue-grey">
+                <div class="card-content white-text">
+                    <span class="card-title">
+                        Offerta <%=ofe.getOfname()%>
+                    </span>
+                    <ul>
+                        <li><img src="http://orig15.deviantart.net/1614/f/2010/217/e/0/biffy_clyro_i_by_henrikack.jpg" style="margin-top: 10px; width: 100px; height: 70px;"></li>
+                        <li>Data scadenza <%=ofe.getOfdateexpired()%></li>
+                        <li>Prezzo <%=ofe.getOfprice()%></li>
+                        <li>Citta <%=ofe.getOfcity()%></li>
+                    </ul>
+                </div>
+            </div>
+        <%}
+        }%>
 
-        <%for(OffertaEvento ofe : carrelloBean.getOfferEventolist()){%>
+        <%//for(OffertaPernotto ofp : carrelloBean.getOfferPernottoArrayList()){%>
+        <%for(Object object : carrelloBean.getItemList()){
+            if(object instanceof OffertaPernottoBean){
+                OffertaPernottoBean ofp = (OffertaPernottoBean) object;%>
         <div class="card blue-grey">
             <div class="card-content white-text">
                 <span class="card-title">
-                    Offerta <%=ofe.getNome()%>
+                    Offerta <%=ofp.getOfname()%>
                 </span>
                 <ul>
                     <li><img src="http://orig15.deviantart.net/1614/f/2010/217/e/0/biffy_clyro_i_by_henrikack.jpg" style="margin-top: 10px; width: 100px; height: 70px;"></li>
-                    <li>Data scadenza <%=ofe.getDataScadenza()%></li>
-                    <li>Prezzo <%=ofe.getPrezzo()%></li>
+                    <li>Data scadenza <%=ofp.getOfdateexpired()%></li>
+                    <li>Prezzo <%=ofp.getOfprice()%></li>
+                    <li>Citta <%=ofp.getOfcity()%></li>
+                    <li>Numero notti <%=ofp.getNumberOfNights()%></li>
+                    <li>Numero stelle <%=ofp.getStars()%></li>
                 </ul>
             </div>
         </div>
-        <%}%>
+        <%}
+        }%>
 
-        <%for(OffertaPernotto ofp : carrelloBean.getOfferPernottoArrayList()){%>
+        <%//for(OffertaTrasporto oft : carrelloBean.getOffertaTrasportoArrayList()){%>
+        <%for(Object object : carrelloBean.getItemList()){
+            if(object instanceof OffertaTrasportoBean){
+                OffertaTrasportoBean oft = (OffertaTrasportoBean) object;%>
         <div class="card blue-grey">
             <div class="card-content white-text">
                 <span class="card-title">
-                    Offerta <%=ofp.getNome()%>
+                    Offerta <%=oft.getOfname()%>
                 </span>
                 <ul>
                     <li><img src="http://orig15.deviantart.net/1614/f/2010/217/e/0/biffy_clyro_i_by_henrikack.jpg" style="margin-top: 10px; width: 100px; height: 70px;"></li>
-                    <li>Data scadenza <%=ofp.getDataScadenza()%></li>
-                    <li>Prezzo <%=ofp.getPrezzo()%></li>
+                    <li>Data scadenza <%=oft.getOfdateexpired()%></li>
+                    <li>Prezzo <%=oft.getOfprice()%></li>
+                    <li>Citta destinazione <%=oft.getOfcity()%></li>
+                    <li>Citta partenza <%=oft.getCityFrom()%></li>
+                    <li>Durata <%=oft.getDuration()%></li>
                 </ul>
             </div>
         </div>
-        <%}%>
+        <%}
+        }%>
 
-        <%for(OffertaTrasporto oft : carrelloBean.getOffertaTrasportoArrayList()){%>
+        <%//for(Pacchetto p : carrelloBean.getPacketlist()){%>
+        <%for(Object object : carrelloBean.getItemList()){
+            if(object instanceof PacchettoBean){
+                PacchettoBean p = (PacchettoBean) object;%>
         <div class="card blue-grey">
             <div class="card-content white-text">
                 <span class="card-title">
-                    Offerta <%=oft.getNome()%>
+                    Pacchetto <%=p.getPname()%>
                 </span>
                 <ul>
                     <li><img src="http://orig15.deviantart.net/1614/f/2010/217/e/0/biffy_clyro_i_by_henrikack.jpg" style="margin-top: 10px; width: 100px; height: 70px;"></li>
-                    <li>Data scadenza <%=oft.getDataScadenza()%></li>
-                    <li>Prezzo <%=oft.getPrezzo()%></li>
-                </ul>
-            </div>
-        </div>
-        <%}%>
-
-        <%for(Pacchetto p : carrelloBean.getPacketlist()){%>
-        <div class="card blue-grey">
-            <div class="card-content white-text">
-                <span class="card-title">
-                    Pacchetto <%=p.getNome()%>
-                </span>
-                <ul>
-                    <li><img src="http://orig15.deviantart.net/1614/f/2010/217/e/0/biffy_clyro_i_by_henrikack.jpg" style="margin-top: 10px; width: 100px; height: 70px;"></li>
-                    <li>Prezzo <%=p.getPrezzo()%></li>
+                    <li>Prezzo <%=p.getPprice()%></li>
                 </ul>
             </div>
         </div>
@@ -135,7 +176,8 @@
                 </button>
             </form>
         </div>
-        <%}%>
+        <%}
+        }%>
 
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="js/materialize.min.js"></script>

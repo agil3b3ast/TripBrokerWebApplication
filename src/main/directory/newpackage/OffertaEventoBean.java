@@ -4,6 +4,7 @@ package newpackage;
  * Created by Alessandro on 08/01/2016.
  */
 
+import newpackage.EntityPackage.Offerta;
 import newpackage.EntityPackage.OffertaEvento;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class OffertaEventoBean extends OffertaBean{
     public void setOftype(String newoftype){this.oftype = newoftype;}
     public int getOfid(){return this.ofid;}
     public void setOfid(int newid){this.ofid = newid;}
+
     /*
     public boolean selectAll(){
         if(this.oftype != ""){
@@ -70,16 +72,84 @@ public class OffertaEventoBean extends OffertaBean{
             for (OffertaEvento off : offlist) {
 
                 offbean = new OffertaEventoBean();
-                offbean.setOfdateexpired(off.getDataScadenza());
+                offbean.setOfdateexpired(off.getDataScadenza().toString());
                 offbean.setOfname(off.getNome());
                 offbean.setOftype(off.getTipologia());
                 offbean.setOfprice((off.getPrezzo()));
                 offbean.setOfid(off.getEveID());
+                offbean.setOfcity(off.getCittà());
                 this.offerList.add(offbean);
             }
         }
         return this.offerList == null;
     }
 
+    public List<String> toStringList(){
+        List<String> ls = new ArrayList<String>();
+        ls.add(getOfcity());
+        ls.add(getOfdateexpired());
+        ls.add(getOfname());
+        if(getOfprice() > 0)
+            ls.add(String.valueOf(getOfprice()));
+        else
+            ls.add("");
+        ls.add(getOftype());
+        return ls;
+    }
+
+    public ArrayList<OffertaBean> fromEvtoEvBean(List<OffertaEvento> offlist){
+        OffertaEventoBean offbean;
+        this.offerList = null;
+        if(offlist != null && offlist.size()>0) {
+
+            this.offerList = new ArrayList<OffertaBean>();
+            for (OffertaEvento off : offlist) {
+
+                offbean = new OffertaEventoBean();
+                offbean.setOfdateexpired(off.getDataScadenza().toString());
+                offbean.setOfname(off.getNome());
+                offbean.setOftype(off.getTipologia());
+                offbean.setOfprice((off.getPrezzo()));
+                offbean.setOfid(off.getEveID());
+                offbean.setOfcity(off.getCittà());
+                this.offerList.add(offbean);
+            }
+        }
+
+        return this.offerList;
+    }
+
+
+    public boolean fillToFind(){
+        List<String> ls = this.toStringList();
+
+        OffertaController controller = OffertaController.getInstance();
+        List<OffertaEvento> offlist = (List<OffertaEvento>) controller.findByCustom(ls,TipoOfferta.OffertaEvento);
+        /*(List<OffertaEvento>)*/
+        /*List<OffertaEvento> */
+
+        /*
+        OffertaEventoBean offbean;
+        this.offerList = null;
+        if(offlist != null && offlist.size()>0) {
+
+            this.offerList = new ArrayList<OffertaBean>();
+            for (OffertaEvento off : offlist) {
+
+                offbean = new OffertaEventoBean();
+                offbean.setOfdateexpired(off.getDataScadenza().toString());
+                offbean.setOfname(off.getNome());
+                offbean.setOftype(off.getTipologia());
+                offbean.setOfprice((off.getPrezzo()));
+                offbean.setOfid(off.getEveID());
+                offbean.setOfcity(off.getCittà());
+                this.offerList.add(offbean);
+            }
+        }*/
+        return fromEvtoEvBean(offlist) == null;
+
+        //return offlist != null;
+
+    }
 
 }

@@ -13,7 +13,7 @@ public class User {
     @Id
     private String usID;
 
-    private String Nome;
+    protected String Nome;
 
     public String getUsID(){
         return this.usID;
@@ -27,7 +27,7 @@ public class User {
         Nome = nome;
     }
 
-    private String Cognome;
+    protected String Cognome;
 
     @Basic
     public String getCognome() {
@@ -38,7 +38,7 @@ public class User {
         Cognome = cognome;
     }
 
-    private String password;
+    protected String password;
 
     @Basic
     public String getPassword() {
@@ -56,7 +56,7 @@ public class User {
     public User(String usID, String ruolo){this.usID = usID; this.ruolo = ruolo;}
 
     @Basic
-    private String ruolo;
+    protected String ruolo;
 
     public String getRuolo() {
         return ruolo;
@@ -65,4 +65,5 @@ public class User {
     public void setRuolo(String ruolo) {
         this.ruolo = ruolo;
     }
+
 }

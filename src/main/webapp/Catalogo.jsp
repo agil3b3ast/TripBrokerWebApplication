@@ -16,6 +16,13 @@
              class="newpackage.CarrelloBean"/>
 <jsp:setProperty name="carrelloBean" property="*"/>
 
+<!-- Si dichiara la variabile utenteBean e istanzia un oggetto newpackage.utenteBean -->
+<jsp:useBean id="utenteBean" scope="session"
+             class="newpackage.UtenteBean" />
+
+<!--  Setta automaticamente tutti gli attributi dell'oggetto utenteBean -->
+<jsp:setProperty name="utenteBean" property="*" />
+
 <%
     if (!pacchettoBean.selectAll()) {
         System.out.println("not null");
@@ -25,7 +32,7 @@
 
     if(!(carrelloBean.getPacketitem().equals("")) || !(carrelloBean.getOffereventoitem().equals("")) || !(carrelloBean.getOfferpernottoitem().equals("")) || !(carrelloBean.getOffertrasportoitem().equals(""))){
         System.out.println("Qualcosa non è null");
-        if(carrelloBean.addItem()) {
+        if(carrelloBean.addItem() || !carrelloBean.carrelloempty()) {
             System.out.println("True");%>
         <jsp:forward page="Pagamento.jsp"/>
 <%      }
@@ -73,9 +80,20 @@
             ni.appendChild(newdiv);*/
         }
     </script>
-
 </head>
     <body background="nirvana.jpg">
+    <!-- Navbar goes here
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Logo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+            </ul>
+        </div>
+    </nav>-->
+    <jsp:include page="navbar.jsp"/>
     <div class="row">
         <div class="col s4">
             <div class="card large">
@@ -120,17 +138,6 @@
             </div>
         </div>
     </div>
-    <!-- Navbar goes here -->
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Logo</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li>
-            </ul>
-        </div>
-    </nav>
     <!-- Page Layout here -->
     <!-- Grey navigation panel -->
     <div class="card blue-grey darken-1">
@@ -338,6 +345,5 @@
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
-
     </body>
 </html>

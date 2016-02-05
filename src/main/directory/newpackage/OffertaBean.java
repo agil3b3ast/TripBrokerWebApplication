@@ -1,24 +1,31 @@
 package newpackage;
 
+import newpackage.EntityPackage.Offerta;
 import newpackage.EntityPackage.OffertaEvento;
 
+import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by Alessandro on 28/12/2015.
  */
-public class OffertaBean {
+public class OffertaBean implements Serializable{
     protected String ofname;
     protected int ofprice;
     protected String ofdateexpired;
     protected ArrayList<OffertaBean> offerList;
-
+    protected String ofcity;
 
     public OffertaBean(){
         this.ofname = "";
-        this.ofprice = -1;
         this.ofdateexpired = "";
+        this.ofcity = "";
     }
 
     public String getOfname(){return this.ofname;}
@@ -29,6 +36,8 @@ public class OffertaBean {
     public void setOfname(String newofname){this.ofname = newofname;}
     public void setOfprice(int newofprice){this.ofprice = newofprice;}
     public void setOfdateexpired(String newofdateexpired){this.ofdateexpired = newofdateexpired;}
+    public String getOfcity(){return this.ofcity;}
+    public void setOfcity(String newcity){this.ofcity = newcity;}
 
     /*
     public boolean selectAll(){
@@ -72,15 +81,15 @@ public class OffertaBean {
             for (OffertaEvento off : offlist) {
 
                 offbean = new OffertaBean();
-                offbean.setOfdateexpired(off.getDataScadenza());
+                offbean.setOfdateexpired(off.getDataScadenza().toString());
                 offbean.setOfname(off.getNome());
                 offbean.setOfprice((off.getPrezzo()));
+                offbean.setOfcity(off.getCittà());
 
                 this.offerList.add(offbean);
             }
         }
         return this.offerList == null;
     }
-
 
 }

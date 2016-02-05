@@ -64,7 +64,8 @@ public class LoginBean {
 		}
 
 		LoginController controller = LoginController.getInstance();
-		Utente found = controller.login(this.username, this.password);
-		return  (found != null);
+		//Utente found = controller.login(this.username, this.password);
+		//return  (found != null);
+		return false;
 	}
 }

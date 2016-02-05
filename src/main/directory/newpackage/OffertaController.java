@@ -57,6 +57,17 @@ public class OffertaController {
         return ls;
     }
 
+    public Object findByCustom(List<String> list,TipoOfferta tipoOfferta){
+        DBResourcesManager.initHibernate();
 
+        //ArrayList<Offerta> ls = OffertaDao.findAll(typetable,typesearch);
+        //List<OffertaEvento> ls = OffertaDaoAnnotations.findAllOffertaEntitysA(typetable,typesearch);
+
+        Object ls = null;
+
+        ls = DAOFactory.getDAOFactory(tipoOfferta).getOffertaDAO().customSearch(list);
+        DBResourcesManager.shutdown();
+        return ls;
+    }
 
 }

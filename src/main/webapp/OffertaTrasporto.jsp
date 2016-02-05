@@ -45,6 +45,7 @@
     <title>OK</title>
 </head>
 <body>
+<jsp:include page="navbar.jsp"/>
 <table align="center">
     <tbody>
     <tr>

@@ -2,13 +2,14 @@ package newpackage;
 
 import newpackage.EntityPackage.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Alessandro on 08/01/2016.
  */
-public class PacchettoBean {
+public class PacchettoBean implements Serializable{
     private String pname;
     private int pprice;
     private boolean pstate;
@@ -17,6 +18,14 @@ public class PacchettoBean {
     private ArrayList<OffertaEventoBean> pofevento;
     private ArrayList<PacchettoBean> plist;
     private int id;
+
+    public PacchettoBean(){
+        this.pname = "";
+        this.pofpernotto = new OffertaPernottoBean();
+        this.poftrasporto = new OffertaTrasportoBean();
+        this.pofevento = new ArrayList<OffertaEventoBean>();
+        this.plist = new ArrayList<PacchettoBean>();
+    }
 
     public void setId(int newid){this.id = newid;}
     public int getId(){return id;}
@@ -33,14 +42,14 @@ public class PacchettoBean {
     public void setPprice(int newprice){this.pprice = newprice;}
     public void setPoftrasporto(OffertaTrasporto newoftrasporto){
         this.poftrasporto.setOftype(newoftrasporto.getTipologia());
-        this.poftrasporto.setOfdateexpired(newoftrasporto.getDataScadenza());
+        this.poftrasporto.setOfdateexpired(newoftrasporto.getDataScadenza().toString());
         this.poftrasporto.setOfprice(newoftrasporto.getPrezzo());
         this.poftrasporto.setOfname(newoftrasporto.getNome());
         this.poftrasporto.setOfid(newoftrasporto.getTrasID());
     }
     public void setPofpernotto(OffertaPernotto newofpernotto){
         this.pofpernotto.setOftype(newofpernotto.getTipologia());
-        this.pofpernotto.setOfdateexpired(newofpernotto.getDataScadenza());
+        this.pofpernotto.setOfdateexpired(newofpernotto.getDataScadenza().toString());
         this.pofpernotto.setOfprice(newofpernotto.getPrezzo());
         this.pofpernotto.setOfname(newofpernotto.getNome());
         this.pofpernotto.setOfid(newofpernotto.getPerID());
@@ -49,7 +58,7 @@ public class PacchettoBean {
         OffertaEventoBean offertaEventoBean = new OffertaEventoBean();
         for(OffertaEvento offertaEvento : loe){
             offertaEventoBean.setOfname(offertaEvento.getNome());
-            offertaEventoBean.setOfdateexpired(offertaEvento.getDataScadenza());
+            offertaEventoBean.setOfdateexpired(offertaEvento.getDataScadenza().toString());
             offertaEventoBean.setOftype(offertaEvento.getTipologia());
             offertaEventoBean.setOfprice(offertaEvento.getPrezzo());
             offertaEventoBean.setOfid(offertaEvento.getEveID());
@@ -79,12 +88,13 @@ public class PacchettoBean {
                 pbean.setPoftrasporto(p.getOffertaTrasporto());
                 pbean.pofevento = new ArrayList<OffertaEventoBean>();
                 pbean.setPofevento(p.getOffertaEvento());
+                pbean.setId(p.getId());
                 //opb.setOfname(p.getOffertaPernotto().getNome());
                 //opb.setOftype(p.getOffertaPernotto().getTipologia());
                 //opb.setOfdateexpired(p.getOffertaPernotto().getDataScadenza());
                 //opb.setOfprice(p.getOffertaPernotto().getPrezzo());
                 //pbean.setPofpernotto(p.getOffertaPernotto());
-                pbean.setId(p.getId());
+
                 this.plist.add(pbean);
             }
         }

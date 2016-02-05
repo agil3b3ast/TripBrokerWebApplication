@@ -1,9 +1,9 @@
 package newpackage.DAOFactory;
 
-import newpackage.DAO.OffertaDAO;
-import newpackage.DAO.PacchettoDAO;
-import newpackage.DAO.UtenteDAO;
+import newpackage.DAO.*;
 import newpackage.TipoOfferta;
+
+import java.util.Calendar;
 
 /**
  * Created by Simone on 23/12/2015.
@@ -33,6 +33,10 @@ public  abstract class DAOFactory {
     {
         return new UtenteDAO();
     }
+
+    public static WebClientDAO getWebClientDAO(){ return new WebClientDAO(); }
+
+    public static CarrelloDAO getCarrelloDAO(){ return new CarrelloDAO(); }
 
     public abstract OffertaDAO getOffertaDAO();
 }

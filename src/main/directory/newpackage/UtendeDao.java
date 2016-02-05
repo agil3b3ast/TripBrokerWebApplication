@@ -101,7 +101,7 @@ public class UtendeDao {
 
             assert (usernameLoaded.equals(username));
 
-            u = new Utente(usernameLoaded, "", nome, cognome);
+            //u = new Utente(usernameLoaded, "", nome, cognome);
 
             // STEP 6: Clean-up dell'ambiente
             rs.close();
@@ -132,7 +132,9 @@ public class UtendeDao {
 
     public static Utente findByNameAndPasswordMockup(String username, String password) {
         if ("myusername".equals(username) && "mypassword".equals(password))
-            return new Utente("myusername", "", "Tizio","Caio");
-        else return null;
+            //return new Utente("myusername", "", "Tizio","Caio");
+                return null;
+        //else return null;
+        return null;
     }
 }
